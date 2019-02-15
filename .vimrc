@@ -33,5 +33,6 @@ let g:f2p = '.'
 nnoremap <silent> <F2> :call F2Func('<cword> ') <cr>
 
 function! F2Func(str)
-|   exec 'AsyncRun -cwd=<root> grep -n -R ' . a:str . ' ' . g:f2p
+    "AsyncRun -cwd=<root>
+    exec 'grep -n -R ' . a:str . ' ' . g:f2p
 endfunc
