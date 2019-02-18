@@ -29,10 +29,18 @@ inoremap <m-.> <esc><c-w>>
 " F2 搜索字符串并在 Quickfix 中显示
 "nnoremap <silent> <F2> :AsyncRun -cwd=<root> grep -n -R <cword> . <cr>
 
-let g:f2p = '.' 
+"let g:cwd = getcwd()
+"echom "cwd:" . g:cwd
+"let g:f2p = getcwd() . '/casualgame/battle/'
+call ResetF2p()
 nnoremap <silent> <F2> :call F2Func('<cword> ') <cr>
 
 function! F2Func(str)
-    "AsyncRun -cwd=<root>
-    exec 'grep -n -R ' . a:str . ' ' . g:f2p
+    "echom 'AsyncRun grep -n -R ' . a:str . ' ' . g:f2p
+    "-cwd=<root>
+    exec 'AsyncRun grep -n -R ' . a:str . ' ' . g:f2p
+endfunc
+
+function! ResetF2p()
+    let g:f2p = getcwd() . '/casualgame/battle/'
 endfunc
