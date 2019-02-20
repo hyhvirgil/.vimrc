@@ -32,6 +32,11 @@ inoremap <m-.> <esc><c-w>>
 "let g:cwd = getcwd()
 "echom "cwd:" . g:cwd
 "let g:f2p = getcwd() . '/casualgame/battle/'
+
+function! ResetF2p()
+    let g:f2p = getcwd() . '/casualgame/battle/'
+endfunc
+
 call ResetF2p()
 nnoremap <silent> <F2> :call F2Func('<cword> ') <cr>
 
@@ -41,6 +46,3 @@ function! F2Func(str)
     exec 'AsyncRun grep -n -R ' . a:str . ' ' . g:f2p
 endfunc
 
-function! ResetF2p()
-    let g:f2p = getcwd() . '/casualgame/battle/'
-endfunc
